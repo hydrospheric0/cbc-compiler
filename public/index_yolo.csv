@@ -1,0 +1,406 @@
+Name,group,class,code,designation
+Fulvous Whistling-Duck,ANSERIFORMES,S,4
+Emperor Goose,ANSERIFORMES,S,5
+Snow Goose,ANSERIFORMES,S,1
+Snow Goose (white form),ANSERIFORMES,SS,NA
+Snow Goose (blue form),ANSERIFORMES,SS,NA
+Ross's Goose,ANSERIFORMES,S,2
+Greater White-fronted Goose,ANSERIFORMES,S,1
+Cackling Goose,ANSERIFORMES,S,2
+Canada Goose,ANSERIFORMES,S,1
+Mute Swan,ANSERIFORMES,S,
+Trumpeter Swan,ANSERIFORMES,S,5
+Tundra Swan,ANSERIFORMES,S,1
+Wood Duck,ANSERIFORMES,S,2
+Garganey,ANSERIFORMES,S,5
+Blue-winged Teal,ANSERIFORMES,S,2
+Cinnamon Teal,ANSERIFORMES,S,1
+Northern Shoveler,ANSERIFORMES,S,1
+Gadwall,ANSERIFORMES,S,1
+Eurasian Wigeon,ANSERIFORMES,S,3
+American Wigeon,ANSERIFORMES,S,1
+Mallard,ANSERIFORMES,S,1
+Northern Pintail,ANSERIFORMES,S,1
+Green-winged Teal,ANSERIFORMES,S,1
+Canvasback,ANSERIFORMES,S,2
+Redhead,ANSERIFORMES,S,3
+Ring-necked Duck,ANSERIFORMES,S,2
+Tufted Duck,ANSERIFORMES,S,5
+Greater Scaup,ANSERIFORMES,S,3
+Lesser Scaup,ANSERIFORMES,S,2
+Harlequin Duck,ANSERIFORMES,S,5
+Surf Scoter,ANSERIFORMES,S,4
+Black Scoter,ANSERIFORMES,S,5
+Long-tailed Duck,ANSERIFORMES,S,5
+Bufflehead,ANSERIFORMES,S,1
+Common Goldeneye,ANSERIFORMES,S,2
+Bufflehead x Common Goldeneye (hybrid),ANSERIFORMES,H,NA
+Barrow's Goldeneye,ANSERIFORMES,S,3
+Hooded Merganser,ANSERIFORMES,S,2
+Common Merganser,ANSERIFORMES,S,2
+Red-breasted Merganser,ANSERIFORMES,S,4
+Ruddy Duck,ANSERIFORMES,S,1
+duck sp.,ANSERIFORMES,SP,NA
+Mountain Quail,GALLIFORMES,S,3
+California Quail,GALLIFORMES,S,1
+new world quail sp.,GALLIFORMES,SP,NA
+Ring-necked Pheasant,GALLIFORMES,S,2
+Wild Turkey,GALLIFORMES,S,1
+Pied-billed Grebe,PODICIPEDIFORMES,S,1
+Horned Grebe,PODICIPEDIFORMES,S,4
+Red-necked Grebe,PODICIPEDIFORMES,S,4
+Eared Grebe,PODICIPEDIFORMES,S,1
+Western Grebe,PODICIPEDIFORMES,S,3
+Clark's Grebe,PODICIPEDIFORMES,S,3
+Rock Pigeon (feral),COLUMBIFORMES,S,1
+Band-tailed Pigeon,COLUMBIFORMES,S,3
+Eurasian Collared-Dove,COLUMBIFORMES,S,1
+Mourning Dove,COLUMBIFORMES,S,1
+Yellow-billed Cuckoo,CUCULIFORMES,S,4
+Greater Roadrunner,CUCULIFORMES,S,3
+Lesser Nighthawk,CAPRIMULGIFORMES,S,3
+Common Nighthawk,CAPRIMULGIFORMES,S,5
+Common Poorwill,CAPRIMULGIFORMES,S,3
+Black Swift,CAPRIMULGIFORMES,S,4
+Chimney Swift,CAPRIMULGIFORMES,S,5
+Vaux's Swift,CAPRIMULGIFORMES,S,3
+White-throated Swift,CAPRIMULGIFORMES,S,2
+Black-chinned Hummingbird,CAPRIMULGIFORMES,S,2
+Anna's Hummingbird,CAPRIMULGIFORMES,S,1
+Costa's Hummingbird,CAPRIMULGIFORMES,S,4
+Rufous Hummingbird,CAPRIMULGIFORMES,S,2
+Allen's Hummingbird,CAPRIMULGIFORMES,S,4
+Calliope Hummingbird,CAPRIMULGIFORMES,S,4
+Black Rail,GRUIFORMES,S,5
+Virginia Rail,GRUIFORMES,S,2
+Sora,GRUIFORMES,S,2
+Common Gallinule,GRUIFORMES,S,2
+American Coot,GRUIFORMES,S,1
+Sandhill Crane,GRUIFORMES,S,2
+Black-necked Stilt,CHARADRIIFORMES,S,1
+American Avocet,CHARADRIIFORMES,S,1
+Black-bellied Plover,CHARADRIIFORMES,S,2
+American Golden-Plover,CHARADRIIFORMES,S,4
+Pacific Golden-Plover,CHARADRIIFORMES,S,4
+Snowy Plover,CHARADRIIFORMES,S,4
+Common Ringed Plover,CHARADRIIFORMES,S,5
+Semipalmated Plover,CHARADRIIFORMES,S,2
+Killdeer,CHARADRIIFORMES,S,1
+Mountain Plover,CHARADRIIFORMES,S,4
+Whimbrel,CHARADRIIFORMES,S,2
+Long-billed Curlew,CHARADRIIFORMES,S,1
+Hudsonian Godwit,CHARADRIIFORMES,S,5
+Marbled Godwit,CHARADRIIFORMES,S,2
+Ruddy Turnstone,CHARADRIIFORMES,S,4
+Black Turnstone,CHARADRIIFORMES,S,5
+Red Knot,CHARADRIIFORMES,S,4
+Ruff,CHARADRIIFORMES,S,4
+Sharp-tailed Sandpiper,CHARADRIIFORMES,S,4
+Stilt Sandpiper,CHARADRIIFORMES,S,4
+Curlew Sandpiper,CHARADRIIFORMES,S,5
+Red-necked Stint,CHARADRIIFORMES,S,5
+Sanderling,CHARADRIIFORMES,S,4
+Dunlin,CHARADRIIFORMES,S,1
+Baird's Sandpiper,CHARADRIIFORMES,S,3
+Little Stint,CHARADRIIFORMES,S,5
+Least Sandpiper,CHARADRIIFORMES,S,1
+Buff-breasted Sandpiper,CHARADRIIFORMES,S,1
+Pectoral Sandpiper,CHARADRIIFORMES,S,4
+Semipalmated Sandpiper,CHARADRIIFORMES,S,3
+Western Sandpiper,CHARADRIIFORMES,S,1
+Short-billed Dowitcher,CHARADRIIFORMES,S,3
+Long-billed Dowitcher,CHARADRIIFORMES,S,1
+Wilson's Snipe,CHARADRIIFORMES,S,2
+Spotted Sandpiper,CHARADRIIFORMES,S,3
+Solitary Sandpiper,CHARADRIIFORMES,S,4
+Lesser Yellowlegs,CHARADRIIFORMES,S,3
+Willet,CHARADRIIFORMES,S,2
+Greater Yellowlegs,CHARADRIIFORMES,S,1
+Marsh Sandpiper,CHARADRIIFORMES,S,5
+Wilson's Phalarope,CHARADRIIFORMES,S,1
+Red-necked Phalarope,CHARADRIIFORMES,S,2
+Red Phalarope,CHARADRIIFORMES,S,4
+Parasitic Jaeger,CHARADRIIFORMES,S,5
+Long-tailed Jaeger,CHARADRIIFORMES,S,5
+Black-legged Kittiwake,CHARADRIIFORMES,S,5
+Sabine's Gull,CHARADRIIFORMES,S,4
+Bonaparte's Gull,CHARADRIIFORMES,S,2
+Little Gull,CHARADRIIFORMES,S,5
+Franklin's Gull,CHARADRIIFORMES,S,4
+Mew Gull,CHARADRIIFORMES,S,3
+Ring-billed Gull,CHARADRIIFORMES,S,1
+Western Gull,CHARADRIIFORMES,S,3
+California Gull,CHARADRIIFORMES,S,1
+Herring Gull,CHARADRIIFORMES,S,1
+Thayer’s Gull,CHARADRIIFORMES,S,2
+Lesser Black-backed Gull,CHARADRIIFORMES,S,4
+Slaty-backed Gull,CHARADRIIFORMES,S,5
+Glaucous-winged Gull,CHARADRIIFORMES,S,2
+Glaucous Gull,CHARADRIIFORMES,S,3
+gull sp.,CHARADRIIFORMES,SP,NA
+Least Tern,CHARADRIIFORMES,S,5
+Caspian Tern,CHARADRIIFORMES,S,2
+Black Tern,CHARADRIIFORMES,S,3
+Common Tern,CHARADRIIFORMES,S,4
+Arctic Tern,CHARADRIIFORMES,S,5
+Forster's Tern,CHARADRIIFORMES,S,2
+Black Skimmer,CHARADRIIFORMES,S,5
+Red-throated Loon,GAVIIFORMES,S,5
+Pacific Loon,GAVIIFORMES,S,5
+Common Loon,GAVIIFORMES,S,4
+loon sp.,GAVIIFORMES,SP,NA
+Fork-tailed Storm-Petrel,PROCELLARIIFORMES,S,5
+Wood Stork,CICONIIFORMES,S,5
+Double-crested Cormorant,SULIFORMES,S,1
+American White Pelican,PELECANIFORMES,S,2
+Brown Pelican,PELECANIFORMES,S,4
+American Bittern,PELECANIFORMES,S,2
+Least Bittern,PELECANIFORMES,S,3
+Great Blue Heron,PELECANIFORMES,S,1
+Great Egret,PELECANIFORMES,S,1
+Snowy Egret,PELECANIFORMES,S,1
+Little Blue Heron,PELECANIFORMES,S,5
+Cattle Egret,PELECANIFORMES,S,2
+Green Heron,PELECANIFORMES,S,1
+Black-crowned Night-Heron,PELECANIFORMES,S,1
+Glossy Ibis,PELECANIFORMES,S,5
+White-faced Ibis,PELECANIFORMES,S,1
+Turkey Vulture,CATHARTIFORMES,S,1
+Osprey,ACCIPITRIFORMES,S,3
+White-tailed Kite,ACCIPITRIFORMES,S,1
+Golden Eagle,ACCIPITRIFORMES,S,3
+Northern Harrier,ACCIPITRIFORMES,S,1
+Sharp-shinned Hawk,ACCIPITRIFORMES,S,2
+Cooper's Hawk,ACCIPITRIFORMES,S,2
+Northern Goshawk,ACCIPITRIFORMES,S,4
+Accipiter sp.,ACCIPITRIFORMES,SP,NA
+Bald Eagle,ACCIPITRIFORMES,S,3
+Red-shouldered Hawk,ACCIPITRIFORMES,S,2
+Swainson's Hawk,ACCIPITRIFORMES,S,1
+Zone-tailed Hawk,ACCIPITRIFORMES,S,5
+Red-tailed Hawk,ACCIPITRIFORMES,S,1
+Red-tailed Hawk (Harlan's),ACCIPITRIFORMES,SS,NA
+Rough-legged Hawk,ACCIPITRIFORMES,S,4
+Ferruginous Hawk,ACCIPITRIFORMES,S,3
+Buteo sp.,ACCIPITRIFORMES,SP,NA
+hawk sp.,ACCIPITRIFORMES,SP,NA
+eagle sp.,ACCIPITRIFORMES,SP,NA
+Barn Owl,STRIGIFORMES,S,1
+Flammulated Owl,STRIGIFORMES,S,4
+Western Screech-Owl,STRIGIFORMES,S,3
+Great Horned Owl,STRIGIFORMES,S,1
+Snowy Owl,STRIGIFORMES,S,5
+Northern Pygmy-Owl,STRIGIFORMES,S,3
+Burrowing Owl,STRIGIFORMES,S,2
+Long-eared Owl,STRIGIFORMES,S,4
+Short-eared Owl,STRIGIFORMES,S,3
+Northern Saw-whet Owl,STRIGIFORMES,S,4
+owl sp.,STRIGIFORMES,SP,NA
+Belted Kingfisher,CORACIIFORMES,S,1
+Lewis's Woodpecker,PICIFORMES,S,3
+Acorn Woodpecker,PICIFORMES,S,1
+Yellow-bellied Sapsucker,PICIFORMES,S,4
+Red-naped Sapsucker,PICIFORMES,S,4
+Red-breasted Sapsucker,PICIFORMES,S,2
+"sapsucker, sp.",PICIFORMES,SP,NA
+Downy Woodpecker,PICIFORMES,S,2
+Nuttall's Woodpecker,PICIFORMES,S,1
+Hairy Woodpecker,PICIFORMES,S,3
+Northern Flicker,PICIFORMES,S,1
+Northern Flicker (Yellow-shafted),PICIFORMES,SS,NA
+Northern Flicker (Red-shafted),PICIFORMES,SS,NA
+Northern Flicker (intergrade),PICIFORMES,H,NA
+Pileated Woodpecker,PICIFORMES,S,3
+Crested Caracara,FALCONIFORMES,S,5
+American Kestrel,FALCONIFORMES,S,1
+Merlin,FALCONIFORMES,S,3
+Gyrfalcon,FALCONIFORMES,S,1
+Peregrine Falcon,FALCONIFORMES,S,3
+Prairie Falcon,FALCONIFORMES,S,3
+falcon sp.,FALCONIFORMES,SP,NA
+Ash-throated Flycatcher,PASSERIFORMES,S,1
+Tropical Kingbird,PASSERIFORMES,S,5
+Cassin's Kingbird,PASSERIFORMES,S,5
+Western Kingbird,PASSERIFORMES,S,1
+Eastern Kingbird,PASSERIFORMES,S,5
+Scissor-tailed Flycatcher,PASSERIFORMES,S,5
+Olive-sided Flycatcher,PASSERIFORMES,S,3
+Western Wood-Pewee,PASSERIFORMES,S,2
+Eastern Wood-Pewee,PASSERIFORMES,S,5
+Yellow-bellied Flycatcher,PASSERIFORMES,S,5
+Willow Flycatcher,PASSERIFORMES,S,1
+Least Flycatcher,PASSERIFORMES,S,4
+Hammond's Flycatcher,PASSERIFORMES,S,5,Rare
+Gray Flycatcher,PASSERIFORMES,S,4
+Dusky Flycatcher,PASSERIFORMES,S,3
+Pacific-slope Flycatcher,PASSERIFORMES,S,1
+Black Phoebe,PASSERIFORMES,S,1
+Eastern Phoebe,PASSERIFORMES,S,4
+Say's Phoebe,PASSERIFORMES,S,2
+Empidonax sp.,PASSERIFORMES,SP,NA
+Vermilion Flycatcher,PASSERIFORMES,S,5
+Loggerhead Shrike,PASSERIFORMES,S,2
+Northern Shrike,PASSERIFORMES,S,4
+Bell's Vireo,PASSERIFORMES,S,4
+Hutton's Vireo,PASSERIFORMES,S,3
+Cassin's Vireo,PASSERIFORMES,S,3
+Plumbeous Vireo,PASSERIFORMES,S,4
+Warbling Vireo,PASSERIFORMES,S,2
+Red-eyed Vireo,PASSERIFORMES,S,5
+Steller's Jay,PASSERIFORMES,S,1,
+California Scrub-Jay,PASSERIFORMES,S,1
+Clark's Nutcracker,PASSERIFORMES,S,5
+Yellow-billed Magpie,PASSERIFORMES,S,1
+American Crow,PASSERIFORMES,S,1
+Common Raven,PASSERIFORMES,S,1
+Horned Lark,PASSERIFORMES,S,1
+Purple Martin,PASSERIFORMES,S,3
+Tree Swallow,PASSERIFORMES,S,1
+Violet-green Swallow,PASSERIFORMES,S,2
+Northern Rough-winged Swallow,PASSERIFORMES,S,2
+Bank Swallow,PASSERIFORMES,S,3
+Cliff Swallow,PASSERIFORMES,S,1
+Barn Swallow,PASSERIFORMES,S,1
+Mountain Chickadee,PASSERIFORMES,S,5
+Chestnut-backed Chickadee,PASSERIFORMES,S,4
+Oak Titmouse,PASSERIFORMES,S,2
+Bushtit,PASSERIFORMES,S,1
+Red-breasted Nuthatch,PASSERIFORMES,S,3
+White-breasted Nuthatch,PASSERIFORMES,S,2
+Pygmy Nuthatch,PASSERIFORMES,S,5
+Brown Creeper,PASSERIFORMES,S,3
+Rock Wren,PASSERIFORMES,S,3
+Canyon Wren,PASSERIFORMES,S,3
+House Wren,PASSERIFORMES,S,1
+Pacific Wren,PASSERIFORMES,S,3
+Winter Wren,PASSERIFORMES,S,5
+Marsh Wren,PASSERIFORMES,S,1
+Bewick's Wren,PASSERIFORMES,S,2
+Blue-gray Gnatcatcher,PASSERIFORMES,S,2
+American Dipper,PASSERIFORMES,S,3
+Golden-crowned Kinglet,PASSERIFORMES,S,3
+Ruby-crowned Kinglet,PASSERIFORMES,S,1
+Wrentit,PASSERIFORMES,S,1
+Taiga Flycatcher,PASSERIFORMES,S,5
+Western Bluebird,PASSERIFORMES,S,2
+Mountain Bluebird,PASSERIFORMES,S,3
+Townsend's Solitaire,PASSERIFORMES,S,4
+Veery,PASSERIFORMES,S,5
+Swainson's Thrush,PASSERIFORMES,S,2
+Hermit Thrush,PASSERIFORMES,S,2
+American Robin,PASSERIFORMES,S,1
+Varied Thrush,PASSERIFORMES,S,3
+Gray Catbird,PASSERIFORMES,S,5
+Curve-billed Thrasher,PASSERIFORMES,S,5
+California Thrasher,PASSERIFORMES,S,2
+Sage Thrasher,PASSERIFORMES,S,4
+Northern Mockingbird,PASSERIFORMES,S,1
+European Starling,PASSERIFORMES,S,1
+Bohemian Waxwing,PASSERIFORMES,S,5
+Cedar Waxwing,PASSERIFORMES,S,1
+Phainopepla,PASSERIFORMES,S,3
+House Sparrow,PASSERIFORMES,S,1
+Citrine Wagtail,PASSERIFORMES,S,5
+Red-throated Pipit,PASSERIFORMES,S,5
+American Pipit,PASSERIFORMES,S,1
+Evening Grosbeak,PASSERIFORMES,S,4
+House Finch,PASSERIFORMES,S,1
+Purple Finch,PASSERIFORMES,S,3
+Cassin's Finch,PASSERIFORMES,S,4
+Common Redpoll,PASSERIFORMES,S,5
+Red Crossbill,PASSERIFORMES,S,3
+Pine Siskin,PASSERIFORMES,S,3
+Lesser Goldfinch,PASSERIFORMES,S,1
+Lawrence's Goldfinch,PASSERIFORMES,S,4
+American Goldfinch,PASSERIFORMES,S,1
+goldfinch sp.,PASSERIFORMES,SP,NA
+Lapland Longspur,PASSERIFORMES,S,4
+Chestnut-collared Longspur,PASSERIFORMES,S,4
+McCown's Longspur,PASSERIFORMES,S,4
+Snow Bunting,PASSERIFORMES,S,5
+Green-tailed Towhee,PASSERIFORMES,S,4
+Spotted Towhee,PASSERIFORMES,S,1
+Rufous-crowned Sparrow,PASSERIFORMES,S,3
+California Towhee,PASSERIFORMES,S,2
+American Tree Sparrow,PASSERIFORMES,S,5
+Chipping Sparrow,PASSERIFORMES,S,2
+Clay-colored Sparrow,PASSERIFORMES,S,4
+Brewer's Sparrow,PASSERIFORMES,S,4
+Black-chinned Sparrow,PASSERIFORMES,S,4
+Vesper Sparrow,PASSERIFORMES,S,3
+Lark Sparrow,PASSERIFORMES,S,1
+Black-throated Sparrow,PASSERIFORMES,S,5
+Sagebrush Sparrow,PASSERIFORMES,S,5
+Bell's Sparrow,PASSERIFORMES,S,2
+Lark Bunting,PASSERIFORMES,S,4
+Savannah Sparrow,PASSERIFORMES,S,1
+Grasshopper Sparrow,PASSERIFORMES,S,4
+Fox Sparrow,PASSERIFORMES,S,2
+Fox Sparrow (Sooty),PASSERIFORMES,SS,2
+Fox Sparrow (Thick-billed),PASSERIFORMES,SS,NA
+Fox Sparrow (Slate-colored),PASSERIFORMES,SS,NA
+Fox Sparrow (Red),PASSERIFORMES,SS,NA
+Song Sparrow,PASSERIFORMES,S,1
+Lincoln's Sparrow,PASSERIFORMES,S,2
+Swamp Sparrow,PASSERIFORMES,S,4
+White-throated Sparrow,PASSERIFORMES,S,3
+Harris's Sparrow,PASSERIFORMES,S,4
+White-crowned Sparrow,PASSERIFORMES,S,1
+White-crowned Sparrow (pugetensis),PASSERIFORMES,SS,NA
+Golden-crowned Sparrow,PASSERIFORMES,S,1
+White-crowned x Golden-crowned Sparrow (hybrid),PASSERIFORMES,H,NA
+Dark-eyed Junco,PASSERIFORMES,S,1
+Dark-eyed Junco (Slate-colored),PASSERIFORMES,SS,1
+Dark-eyed Junco (Oregon),PASSERIFORMES,SS,NA
+Dark-eyed Junco (Pink-sided),PASSERIFORMES,SS,NA
+sparrow sp.,PASSERIFORMES,SP,NA
+Yellow-breasted Chat,PASSERIFORMES,S,3
+Yellow-headed Blackbird,PASSERIFORMES,S,2
+Bobolink,PASSERIFORMES,S,5
+Western Meadowlark,PASSERIFORMES,S,1
+Orchard Oriole,PASSERIFORMES,S,5
+Hooded Oriole,PASSERIFORMES,S,3
+Bullock's Oriole,PASSERIFORMES,S,2
+Baltimore Oriole,PASSERIFORMES,S,4
+Red-winged Blackbird,PASSERIFORMES,S,1
+Tricolored Blackbird,PASSERIFORMES,S,3
+Brown-headed Cowbird,PASSERIFORMES,S,1
+Rusty Blackbird,PASSERIFORMES,S,5
+Brewer's Blackbird,PASSERIFORMES,S,1
+Great-tailed Grackle,PASSERIFORMES,S,2
+Ovenbird,PASSERIFORMES,S,5
+Northern Waterthrush,PASSERIFORMES,S,4
+Black-and-white Warbler,PASSERIFORMES,S,4
+Tennessee Warbler,PASSERIFORMES,S,4
+Orange-crowned Warbler,PASSERIFORMES,S,2
+Nashville Warbler,PASSERIFORMES,S,3
+MacGillivray's Warbler,PASSERIFORMES,S,2
+Common Yellowthroat,PASSERIFORMES,S,2
+Hooded Warbler,PASSERIFORMES,S,5
+American Redstart,PASSERIFORMES,S,4
+Northern Parula,PASSERIFORMES,S,4
+Magnolia Warbler,PASSERIFORMES,S,5
+Bay-breasted Warbler,PASSERIFORMES,S,5
+Yellow Warbler,PASSERIFORMES,S,1
+Chestnut-sided Warbler,PASSERIFORMES,S,4
+Blackpoll Warbler,PASSERIFORMES,S,4
+Black-throated Blue Warbler,PASSERIFORMES,S,5
+Palm Warbler,PASSERIFORMES,S,5
+Yellow-rumped Warbler,PASSERIFORMES,S,1
+Yellow-rumped Warbler (Myrtle),PASSERIFORMES,SS,NA
+Yellow-rumped Warbler (Audubon's),PASSERIFORMES,SS,NA
+Yellow-throated Warbler,PASSERIFORMES,S,5
+Black-throated Gray Warbler,PASSERIFORMES,S,2
+Townsend's Warbler,PASSERIFORMES,S,2
+Hermit Warbler,PASSERIFORMES,S,3
+Black-throated Green Warbler,PASSERIFORMES,S,5
+Canada Warbler,PASSERIFORMES,S,5
+Wilson's Warbler,PASSERIFORMES,S,1
+warbler sp. (Parulidae sp.),PASSERIFORMES,SP,NA
+Summer Tanager,PASSERIFORMES,S,4
+Western Tanager,PASSERIFORMES,S,1
+Rose-breasted Grosbeak,PASSERIFORMES,S,4
+Black-headed Grosbeak,PASSERIFORMES,S,2
+Blue Grosbeak,PASSERIFORMES,S,2
+Lazuli Bunting,PASSERIFORMES,S,2
+Indigo Bunting,PASSERIFORMES,S,4

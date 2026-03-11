@@ -1,0 +1,23 @@
+{
+  "name": "cbc-compilation-workbench",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "CBC Compilation Workbench - client-side checklist compilation and review",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tmcw/togeojson": "^6.0.0",
+    "@turf/boolean-point-in-polygon": "^7.3.1",
+    "leaflet": "^1.9.4",
+    "papaparse": "^5.5.3",
+    "plotly.js-dist-min": "^2.35.3",
+    "shpjs": "^6.2.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
+  }
+}

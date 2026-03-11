@@ -1,0 +1,16 @@
+[
+  {
+    "id": "capc",
+    "code": "CAPC",
+    "name": "Putah Creek",
+    "geojson": "data/capc_count_circle_areas.geojson",
+    "longtermCsv": "data/CAPC_CBC_1971_2025_v2.csv",
+    "tripReportUrl": "https://ebird.org/tripreport/449085",
+    "defaultDate": "2025-12-21",
+    "cbcPresets": [
+      { "value": "2025-12-21", "label": "2025 / CBC 126 / CAPC 55" },
+      { "value": "2024-12-15", "label": "2024 / CBC 125 / CAPC 54" },
+      { "value": "2023-12-17", "label": "2023 / CBC 124 / CAPC 53" }
+    ]
+  }
+]
