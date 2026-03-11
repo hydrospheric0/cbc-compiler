@@ -11,6 +11,16 @@ import { AUDUBON_ALIAS_BY_KEY, AUDUBON_PREFERRED_NAME_BY_CANON } from './taxonom
 const app = document.querySelector('#app');
 const assetUrl = (relativePath) => `${import.meta.env.BASE_URL}${String(relativePath).replace(/^\/+/, '')}`;
 
+const faviconHref = assetUrl('favicon.svg');
+let faviconLink = document.querySelector('link[rel="icon"]');
+if (!faviconLink) {
+  faviconLink = document.createElement('link');
+  faviconLink.rel = 'icon';
+  document.head.appendChild(faviconLink);
+}
+faviconLink.type = 'image/svg+xml';
+faviconLink.href = faviconHref;
+
 app.innerHTML = `
   <div class="app">
     <header class="topbar">
