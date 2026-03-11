@@ -11,6 +11,9 @@ The tool presumes that the count was fully conducted in eBird and all checklist 
 
 The app is structured for static hosting and local browser-side use. This means that the data re not saved anywhere els, othe rthan the compiler's computer.
 
+The tool can be accessed at:
+https://hydrospheric0.github.io/cbc-compiler/
+
 ## Features
 - Select CBC count circle are and plot the locations of all eBird checklist.
 - Select species specific recors so you easily see records of the same species within close proximity. e.g. Osprey.
