@@ -299,7 +299,6 @@ const map = L.map('map', {
 });
 map.setView([38.5, -121.9], 8);
 
-// Ensure consistent layer ordering: polygons below points.
 map.createPane('areasPane');
 map.getPane('areasPane').style.zIndex = '350';
 map.createPane('pointsPane');
@@ -403,8 +402,7 @@ function escapeHtml(s) {
 }
 
 function canonicalizeSpeciesName(name) {
-  // Ignore subspecies/variants typically denoted as trailing parentheticals.
-  // Example: "Snow Goose (blue form)" -> "Snow Goose"
+
   const raw = (name ?? '').toString().trim();
   if (!raw) return '';
   return raw.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
@@ -426,7 +424,6 @@ function shouldPreserveChecklistTaxa(headerMap) {
   return isChecklistStyleCsv(headerMap) && taxonDisplayMode === 'split';
 }
 
-// Count circle metadata and asset paths come from public/count_circles.json.
 const countCircleMeta = {
   id: '',
   code: '',
@@ -496,7 +493,7 @@ function getRowLatLon(row, headerMap) {
 }
 
 function approxDistanceScore(lat1, lon1, lat2, lon2) {
-  // Cheap equirectangular distance proxy (good enough for "closest area" fallback).
+
   const k = Math.cos(((lat1 + lat2) / 2) * (Math.PI / 180));
   const dx = (lon2 - lon1) * k;
   const dy = lat2 - lat1;
@@ -515,7 +512,7 @@ function updateAreasStyle() {
       ...base,
       color: isActive ? '#ff8800' : '#3388ff',
       fill: true,
-      // Leave fillColor unset so Leaflet uses its default blue.
+
       fillOpacity: isActive ? 0.22 : 0.12,
     };
   });
@@ -526,7 +523,7 @@ async function applyAreasGeojson(geojson, { sourceLabel = '' } = {}) {
     try {
       map.removeLayer(areasLayer);
     } catch {
-      // ignore
+
     }
     areasLayer = null;
   }
@@ -542,7 +539,6 @@ async function applyAreasGeojson(geojson, { sourceLabel = '' } = {}) {
 
   updateCountCircleLabel();
 
-  // Build an index for point-in-polygon matching.
   const features = Array.isArray(geojson?.features) ? geojson.features : [];
   areasIndex = features
     .filter((f) => f && f.type === 'Feature' && f.geometry)
@@ -577,7 +573,6 @@ async function applyAreasGeojson(geojson, { sourceLabel = '' } = {}) {
       layer.on('click', () => {
         if (!key) return;
 
-        // One selection at a time: choosing an area clears any hotspot selection.
         activeLocationFilter = null;
         activeLocationFilterLabel = null;
 
@@ -588,10 +583,8 @@ async function applyAreasGeojson(geojson, { sourceLabel = '' } = {}) {
     },
   }).addTo(map);
 
-  // Areas are active by default.
   updateAreasStyle();
 
-  // If a CSV was loaded before areas finished loading, backfill area assignments now.
   if (currentCsv && needsAreaAssignment) {
     try {
       assignAreasToRows(currentCsv.rows, currentCsv.headerMap);
@@ -602,19 +595,18 @@ async function applyAreasGeojson(geojson, { sourceLabel = '' } = {}) {
     renderTripReportFromCurrentCsv();
   }
 
-  // Keep points above polygons.
   try {
     pointsLayer.bringToFront();
   } catch {
-    // ignore
+
   }
 
   const bumpZoom = () => {
-    // Zoom out by a quarter-step after initial view is set.
+
     try {
       map.setZoom(map.getZoom() - 0.25);
     } catch {
-      // ignore
+
     }
   };
 
@@ -646,7 +638,6 @@ async function loadGeojson() {
   await applyAreasGeojson(geojson, { sourceLabel: countCircleMeta.code || countCircleMeta.name || '' });
 }
 
-// Leaflet sometimes needs a size invalidation after flex layout.
 setTimeout(() => map.invalidateSize(), 0);
 
 const statusEl = document.getElementById('status');
@@ -711,21 +702,16 @@ function focusMapOnCountCircle() {
     try {
       map.fitBounds(bounds, { padding: [20, 20] });
     } catch {
-      // ignore
+
     }
   }
 }
 
-/**
- * Scan CSV rows for the most-represented date in the CBC window (Dec 14 – Jan 15).
- * Returns { dateStr: 'YYYY-MM-DD', cbcNumber: N } or null if nothing suitable found.
- * CBC count number: for Dec dates in year Y → CBC# = Y - 1899; for Jan dates in year Y → CBC# = Y - 1900.
- */
 function detectCbcDateFromRows(rows, headerMap) {
   const counts = new Map();
   for (const row of rows) {
     const raw = (getField(row, headerMap, 'Date') || '').toString().trim();
-    // accept YYYY-MM-DD
+
     const m = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (!m) continue;
     const month = parseInt(m[2], 10);
@@ -735,7 +721,7 @@ function detectCbcDateFromRows(rows, headerMap) {
     counts.set(raw, (counts.get(raw) || 0) + 1);
   }
   if (!counts.size) return null;
-  // require at least 5 rows for a date to be significant
+
   const significant = [...counts.entries()].filter(([, n]) => n >= 5);
   if (!significant.length) return null;
   const [dateStr] = significant.sort((a, b) => b[1] - a[1])[0];
@@ -774,7 +760,7 @@ function updateTaxonomyMissingWarningsFromTripData(data) {
       }`;
     })
     .catch(() => {
-      // silently ignore
+
     });
 }
 
@@ -1202,7 +1188,7 @@ function assignAreasToRows(rows, headerMap) {
           break;
         }
       } catch {
-        // ignore malformed geometries; will fall back to closest.
+
       }
     }
 
@@ -1230,7 +1216,6 @@ function setStatus(text) {
   if (!statusEl) return;
   const raw = (text ?? '').toString();
 
-  // Default behavior: plain text for single-line statuses.
   if (!raw.includes('\n') && !raw.startsWith('Area filter:') && !raw.startsWith('Hotspot filter:')) {
     statusEl.textContent = raw;
     return;
@@ -1328,7 +1313,7 @@ function matchesWordFilterRow(row, headerMap, rawFilter) {
 
 function matchesUnusualFilter(speciesName) {
   if (!showUnusualOnly) return true;
-  // "Unusual" = has any YOLO badge/designation (Uncommon/Rare/etc).
+
   const yolo = getYoloInfoForSpecies(speciesName);
   return Boolean(yolo && (yolo.code === 4 || yolo.code === 5));
 }
@@ -1336,7 +1321,7 @@ function matchesUnusualFilter(speciesName) {
 function matchesOwlsFilter(speciesName) {
   if (!owlsOnly) return true;
   const hay = (speciesName ?? '').toString();
-  // Match the actual word "owl" (handles "Screech-Owl", but not "yellowlegs" or "peafowl").
+
   return /\bowl\b/i.test(hay);
 }
 
@@ -1355,12 +1340,8 @@ let yoloIndexPromise = null;
 
 let editMode = false;
 
-// Map rowId -> { suggestedCount: number|null, explanation: string }
 const editsByRowId = new Map();
 
-// Persistent edit storage (IndexedDB)
-// - Keyed by a stable row key derived from the row contents (submissionId/species/date/time/location)
-// - RowId is per-import and can change; we only use it for DOM identity.
 const editsByRowKey = new Map();
 const rowKeyByRowId = new Map();
 
@@ -1386,7 +1367,7 @@ function openEditsDb() {
           try {
             snap.createIndex('createdAt', 'createdAt', { unique: false });
           } catch {
-            // ignore
+
           }
         }
       };
@@ -1400,7 +1381,7 @@ function openEditsDb() {
 }
 
 async function loadAllEditsFromDb() {
-  // Safe no-op if IndexedDB is unavailable.
+
   if (typeof indexedDB === 'undefined') return;
   try {
     const db = await openEditsDb();
@@ -1422,7 +1403,7 @@ async function loadAllEditsFromDb() {
       req.onerror = () => resolve();
     });
   } catch {
-    // ignore
+
   }
 }
 
@@ -1445,7 +1426,7 @@ async function persistEditToDb(rowKey, edit) {
       tx.onabort = () => resolve();
     });
   } catch {
-    // ignore
+
   }
 }
 
@@ -1464,8 +1445,6 @@ function computeRowKey(row, headerMap) {
   const lat = ll ? String(ll.lat) : '';
   const lon = ll ? String(ll.lon) : '';
 
-  // submissionId is the best unique identifier, but some CSVs may not have it.
-  // Include enough columns so the key is stable across reloads of the same CSV.
   const circle = normalizeRowKeyPart(countCircleMeta.code || '');
 
   return [
@@ -1519,7 +1498,7 @@ function formatMinutesAsHoursMinutes(totalMinutes) {
 function getOrAssignRowId(row) {
   const existing = row?.__cbc_rowId;
   if (typeof existing === 'number' && Number.isFinite(existing)) return existing;
-  // Assigned during parse; fall back to assigning here if needed.
+
   const next = getOrAssignRowId._nextId || 1;
   getOrAssignRowId._nextId = next + 1;
   row.__cbc_rowId = next;
@@ -1537,7 +1516,7 @@ function setRowEdit(rowId, update) {
   const rowKey = rowKeyByRowId.get(rowId);
   if (typeof rowKey === 'string' && rowKey) {
     editsByRowKey.set(rowKey, next);
-    // fire-and-forget
+
     persistEditToDb(rowKey, next);
   }
 
@@ -1812,7 +1791,7 @@ function maybeKickoffTaxonomyIndexLoad() {
       try {
         renderTripReportFromCurrentCsv();
       } catch {
-        // ignore
+
       }
     })
     .catch(() => {
@@ -1834,9 +1813,6 @@ async function loadAudubonOrder() {
         return audubonOrder;
       }
 
-      // Build a tolerant lookup so our canonicalized species names still match.
-      // Many pipelines normalize names (e.g. stripping parentheticals), while the
-      // Audubon list may include those parentheticals as separate entries.
       const m = new Map();
       const setMin = (k, v) => {
         if (!k) return;
@@ -1891,7 +1867,6 @@ function normalizeForAudubonFuzzy(raw) {
 function shouldTryAudubonFuzzy(raw) {
   const s = (raw ?? '').toString().toLowerCase();
   if (!s) return false;
-  // Only for ambiguous taxa where punctuation/formatting varies a lot.
   return /\bsp{1,2}\.?\b/.test(s) || s.includes('/') || /\bhybrid\b/.test(s) || /\s[×x]\s/.test(s);
 }
 
@@ -1947,7 +1922,6 @@ function getAudubonOrderValue(speciesName) {
     return null;
   }
 
-  // Back-compat if audubonOrder is still a plain object.
   for (const c of candidates) {
     if (!c) continue;
     const v = audubonOrder[c];
@@ -1981,7 +1955,6 @@ async function loadYoloIndex() {
     const code = Number(codeRaw);
     if (!Number.isFinite(code)) continue;
 
-    // Store both exact and canonical keys so that form/subspecies names can still match.
     const exactKey = name.toLowerCase();
     const canonKey = normalizeSpeciesKey(name);
     const payload = { code, designation: designationRaw };
@@ -2001,12 +1974,10 @@ function maybeKickoffYoloLoad() {
       try {
         renderTripReportFromCurrentCsv();
       } catch {
-        // ignore
       }
     })
     .catch(() => {
       yoloIndexPromise = null;
-      // silently ignore; badge just won't show
     });
 }
 
@@ -2037,7 +2008,6 @@ function maybeKickoffOrderingLoads() {
 
   const mode = getActiveSortMode();
 
-  // Audubon mode always wants the Audubon list ordering.
   if (mode === 'audubon') {
     loadAudubonOrder()
       .then(() => {
@@ -2048,12 +2018,11 @@ function maybeKickoffOrderingLoads() {
         }
       })
       .catch(() => {
-        // silently ignore; we'll fall back to other ordering
+
       });
     return;
   }
 
-  // eBird mode: only useful if CSV lacks Taxonomic Order.
   if (mode === 'ebird' && !currentCsv.headerMap.has('taxonomic order')) {
     loadTaxonomyOrder()
       .then(() => {
@@ -2064,7 +2033,7 @@ function maybeKickoffOrderingLoads() {
         }
       })
       .catch(() => {
-        // silently ignore; we'll fall back to alphabetical sorting
+
       });
   }
 }
@@ -2077,13 +2046,10 @@ function getActiveSortMode() {
 }
 
 function normalizeTripReportSpeciesCell(raw) {
-  // eBird trip reports include section headers like:
-  // - "EXOTIC: ESCAPEE" / "EXOTIC: ESTABLISHED" / etc
-  // - "ADDITIONAL TAXA"
-  // These can appear in exported/scraped CSVs; they should not be treated as taxa rows.
+
   const s = (raw ?? '')
     .toString()
-    // Some exports include the object replacement char (often from copied icons).
+
     .replace(/\uFFFC/g, '')
     .replace(/\s+/g, ' ')
     .trim();
@@ -2123,8 +2089,7 @@ function isExoticCode(raw) {
 
 function isSpTaxonName(name) {
   const s = (name ?? '').toString();
-  // Match "sp", "sp.", "spp", "spp." (common in eBird exports and checklists)
-  // so these taxa are consistently treated as "Other taxa" in summary metrics.
+
   return /\bsp{1,2}\.?(\b|\s|$)/i.test(s);
 }
 
@@ -2135,7 +2100,7 @@ function isSlashTaxonName(name) {
 
 function isHybridTaxonName(name) {
   const s = (name ?? '').toString();
-  // eBird hybrids often appear as "A x B" or "A × B" or contain "hybrid".
+
   return /\s[×x]\s/i.test(s) || /\bhybrid\b/i.test(s);
 }
 
@@ -2147,11 +2112,9 @@ function isOtherTaxon(entry) {
 
 function tripSectionLabelForEntry(entry) {
   const mode = getActiveSortMode();
-  // In Audubon mode, keep all taxa blended in a single list
-  // (do not break out Additional taxa / Hybrids sections), but still
-  // keep true exotics separated.
+
   if (mode === 'audubon') {
-    // While audubon order is still loading, avoid flicker by keeping a 2-way split.
+
     if (!audubonOrder) {
       if (entry?.isExotic) return 'Exotic / Escapee';
       return 'Species observed';
@@ -2169,12 +2132,7 @@ function tripSectionLabelForEntry(entry) {
 }
 
 function ebirdSectionRank(entry) {
-  // Sort order to mimic eBird trip report style:
-  // 1) main taxa
-  // 2) hybrids
-  // 3) exotic species
-  // 4) additional taxa
-  // Within additional taxa, put “sp.” taxa and slash taxa at the bottom.
+
   const isAdditional = Boolean(entry?.isAdditionalTaxon);
   const isExotic = Boolean(entry?.isExotic);
   const isHybrid = Boolean(entry?.isHybridTaxon);
@@ -2202,10 +2160,6 @@ function compareSpecies(a, b) {
     const ao = getAudubonOrderValue(a.species);
     const bo = getAudubonOrderValue(b.species);
 
-    // Section grouping in Audubon mode:
-    // 0) In CBC list (Audubon order found)
-    // 1) Not in CBC list
-    // 2) Exotic / Escapee
     const ar = a?.isExotic ? 2 : typeof ao === 'number' ? 0 : 1;
     const br = b?.isExotic ? 2 : typeof bo === 'number' ? 0 : 1;
     if (ar !== br) return ar - br;
@@ -2214,8 +2168,6 @@ function compareSpecies(a, b) {
     return a.species.localeCompare(b.species);
   }
 
-  // eBird mode: group main -> exotic -> additional, then prefer Taxonomic Order from CSV,
-  // fall back to Clements map.
   const sa = ebirdSectionRank(a);
   const sb = ebirdSectionRank(b);
   if (sa.rank !== sb.rank) return sa.rank - sb.rank;
@@ -2244,8 +2196,7 @@ function computeTripDataFromCurrentCsv() {
       ? rows.filter((r) => getField(r, headerMap, 'Date') === selectedDate)
       : rows;
 
-    // Load taxonomy index for exotic/escapee flags.
-    maybeKickoffTaxonomyIndexLoad();
+  maybeKickoffTaxonomyIndexLoad();
 
   if (activeAreaFilter) {
     filteredRows = filteredRows.filter((r) => r && r.__cbc_area === activeAreaFilter);
@@ -2273,15 +2224,11 @@ function computeTripDataFromCurrentCsv() {
   const exoticCodeKeyExists = headerMap.has('exotic code');
   const taxCategoryKeyExists = headerMap.has('taxonomic category');
 
-  // In eBird exports like MyEBirdData.csv, exotic/category columns may be absent.
-  // If we have taxonomyIndex loaded, use it to flag exotic/escapee taxa.
   const taxonomyExoticLookup = taxonomyIndex?.exoticByName ?? null;
 
   const bySpecies = new Map();
   const allChecklists = new Set();
 
-  // Some trip-report exports embed section headers as rows (e.g. "EXOTIC:" / "ADDITIONAL TAXA").
-  // If the CSV doesn't have explicit category columns, use these headers to tag subsequent rows.
   let sectionHint = 'main';
 
   for (const row of filteredRows) {
@@ -2340,7 +2287,6 @@ function computeTripDataFromCurrentCsv() {
       entry.isExotic = true;
     }
 
-    // Always treat Indian Peafowl as Exotic / Escapee in the compilation.
     if (normalizeSpeciesKey(species) === 'indian peafowl') {
       entry.isExotic = true;
     }
@@ -2351,18 +2297,14 @@ function computeTripDataFromCurrentCsv() {
       entry.isAdditionalTaxon = true;
     }
 
-    // In eBird mode, always keep “sp.” taxa out of the main section.
-    // (Alpha/Audubon modes can mix them with main species.)
     if (activeMode === 'ebird' && entry.isSpTaxon) {
       entry.isAdditionalTaxon = true;
     }
 
-    // Always treat slash taxa as "Other taxa".
     if (entry.isSlashTaxon) {
       entry.isAdditionalTaxon = true;
     }
 
-    // Always treat hybrids as a separate category.
     if (entry.isHybridTaxon) {
       entry.isAdditionalTaxon = true;
     }
@@ -2395,7 +2337,7 @@ function computeTripDataFromCurrentCsv() {
   }
 
   if (showUnusualOnly) {
-    // Ensure YOLO index starts loading so filtering can work.
+
     maybeKickoffYoloLoad();
   }
 
@@ -2452,8 +2394,6 @@ function formatObsDateTime(dateRaw, timeRaw) {
     const raw = (timeText || '').toString().trim();
     if (!raw) return '';
 
-    // 12-hour time with AM/PM.
-    // Examples: "6:05 AM", "06:05PM", "6 PM", "12:00 am".
     const m = raw.match(/^(\d{1,2})(?::(\d{2}))?(?::(\d{2}))?\s*([AaPp][Mm])$/);
     if (m) {
       let hour = Number(m[1]);
@@ -2469,7 +2409,6 @@ function formatObsDateTime(dateRaw, timeRaw) {
       return second ? `${hh}:${mm}:${second}` : `${hh}:${mm}`;
     }
 
-    // 24-hour time; pad to HH:MM.
     const m24 = raw.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/);
     if (m24) {
       const hour = Number(m24[1]);
@@ -2559,9 +2498,6 @@ function loadLongtermCapcDb() {
 
       if (!years.length) throw new Error('Long-term dataset has no year columns.');
 
-      // Group by canonical species name (strip parentheticals, etc.) while avoiding double counting.
-      // Rule: if a canonical row exists, prefer it, and only add sub-rows in years where it appears
-      // to NOT already include them (heuristic: if base < subs for that year).
       const groups = new Map();
 
       for (const row of rows) {
@@ -2590,7 +2526,6 @@ function loadLongtermCapcDb() {
         }
       }
 
-      // Final series per canonical species.
       const seriesByCanon = new Map();
       for (const [canon, g] of groups.entries()) {
         const out = new Array(years.length).fill(0);
@@ -2616,7 +2551,7 @@ function loadLongtermCapcDb() {
       return longtermCapcDb;
     })
     .finally(() => {
-      // allow retry on failure
+
       if (!longtermCapcDb) longtermCapcPromise = null;
     });
 
@@ -2670,7 +2605,6 @@ function renderSpeciesPlotFromCurrentCsv() {
         select.appendChild(opt);
       }
 
-      // Default to a common, stable choice if present.
       const defaultPick = db.seriesByCanon.has('American Robin') ? 'American Robin' : db.canons[0];
       select.value = defaultPick;
 
@@ -2682,7 +2616,6 @@ function renderSpeciesPlotFromCurrentCsv() {
         const series = db.seriesByCanon.get(canon);
         if (!series) return;
 
-        // Clear previous plot elements after controls.
         while (speciesPlotEl.childNodes.length > 1) {
           speciesPlotEl.removeChild(speciesPlotEl.lastChild);
         }
@@ -2707,9 +2640,6 @@ function renderSpeciesPlotFromCurrentCsv() {
         footer.className = 'species-plot-footer';
         footer.textContent = `${canon} • ${firstYear}–${lastYear} • 2025: ${lastVal} • Max: ${yMax}`;
 
-        // Plotly lollipop styling (same as prior standalone species_plot.html):
-        // - 1971–2024 in Plotly default blue
-        // - 2025 highlighted red
         const historicYears = years.slice(0, -1);
         const historicVals = series.slice(0, -1);
         const y2025 = series[lastIdx];
@@ -2873,11 +2803,8 @@ function renderTripReportFromCurrentCsv() {
     return;
   }
 
-  // Load YOLO index in background (if present in /public).
   maybeKickoffYoloLoad();
 
-  // Ensure taxonomy index is loading so exotic/escapee grouping can work even
-  // when the CSV lacks Exotic Code / Taxonomic Category.
   maybeKickoffTaxonomyIndexLoad();
 
   const fragment = document.createDocumentFragment();
@@ -2929,7 +2856,7 @@ function renderTripReportFromCurrentCsv() {
     syncSpeciesMapToggle();
 
     mapCb.addEventListener('click', (e) => {
-      // Do not toggle the <details> row.
+
       e.preventDefault();
       e.stopPropagation();
 
@@ -2938,12 +2865,10 @@ function renderTripReportFromCurrentCsv() {
       else selectedSpeciesKeysForMap.add(speciesKey);
       syncSpeciesMapToggle();
 
-      // Species-map filtering should show all locations for that species.
       activeLocationFilter = null;
       activeLocationFilterLabel = null;
       pendingOpenPopupLocationKey = null;
 
-      // Apply filter without changing zoom.
       plotLocationsFromCurrentCsv({ zoomToResults: false });
     });
 
@@ -2986,11 +2911,6 @@ function renderTripReportFromCurrentCsv() {
       syncToggle();
     });
     right.appendChild(toggleBtn);
-
-
-    // Removed per request: no "Checklists" / "Observations" summary.
-
-    // Edits are per-observation row (shown under each observation when Edit is enabled).
 
     summary.appendChild(left);
     summary.appendChild(right);
@@ -3138,7 +3058,7 @@ function renderTripReportFromCurrentCsv() {
       hsCb.type = 'checkbox';
       hsCb.checked = Boolean(o.locKey && selectedLocationKeys.has(o.locKey));
       hsCb.addEventListener('click', (e) => {
-        // Avoid toggling the <details> section.
+
         e.stopPropagation();
       });
       hsCb.addEventListener('change', () => {
@@ -3146,7 +3066,6 @@ function renderTripReportFromCurrentCsv() {
         if (hsCb.checked) selectedLocationKeys.add(o.locKey);
         else selectedLocationKeys.delete(o.locKey);
 
-        // Selecting from the table should surface the eBird link via the popup.
         if (hsCb.checked) pendingOpenPopupLocationKey = o.locKey;
         plotLocationsFromCurrentCsv({ zoomToResults: false });
       });
@@ -3177,7 +3096,6 @@ function renderTripReportFromCurrentCsv() {
 
   tripReportEl.appendChild(fragment);
 
-  // Apply show-all toggle state to newly rendered details.
   const desired = Boolean(showAllDetailsEl.checked);
   for (const d of tripReportEl.querySelectorAll('.species-details')) {
     d.classList.toggle('open', desired);
@@ -3272,8 +3190,7 @@ function plotLocationsFromCurrentCsv(options = {}) {
 
     const highlight = Boolean(activeAreaFilter) && loc.area && loc.area === activeAreaFilter;
     const isSelected = selectedLocationKeys.has(loc.key);
-    const baseColor = highlight ? '#cc0000' : '#cc0000';
-    const color = isSelected ? '#ffcc00' : baseColor;
+    const color = isSelected ? '#ffcc00' : '#cc0000';
 
     const bySid = new Map();
     for (const it of loc.lists || []) {
@@ -3325,31 +3242,29 @@ function plotLocationsFromCurrentCsv(options = {}) {
         opacity: 0.9,
       })
       .on('click', () => {
-        // Clicking a point should not change filters; just pan to it.
+
         try {
           map.panTo([loc.lat, loc.lon]);
         } catch {
-          // ignore
+
         }
       })
       .addTo(pointsLayer);
 
-    // If this re-render was triggered by a table selection, reopen that popup.
     if (pendingOpenPopupLocationKey && pendingOpenPopupLocationKey === loc.key) {
       try {
         marker?.openPopup?.();
       } catch {
-        // ignore
+
       }
       pendingOpenPopupLocationKey = null;
     }
   }
 
-  // Keep points above polygons.
   try {
     pointsLayer.bringToFront();
   } catch {
-    // ignore
+
   }
 
   if (summaryDateEl) summaryDateEl.textContent = selectedDate || '—';
@@ -3413,8 +3328,7 @@ function parseCsvAndStore(csvText) {
   });
 
   const errors = parsed.errors || [];
-  // PapaParse can emit per-row column-count warnings like "TooFewFields".
-  // For mapping unique locations we can safely proceed as long as we got rows.
+
   const columnCountWarnings = errors.filter((e) =>
     ['TooFewFields', 'TooManyFields', 'FieldMismatch'].includes(e.code)
   );
@@ -3422,7 +3336,7 @@ function parseCsvAndStore(csvText) {
     (e) => !['TooFewFields', 'TooManyFields', 'FieldMismatch'].includes(e.code)
   );
   if (nonColumnCountErrors.length) {
-    // Show first non-column-count error only to stay minimal.
+
     throw new Error(nonColumnCountErrors[0].message || 'CSV parse error');
   }
 
@@ -3433,7 +3347,6 @@ function parseCsvAndStore(csvText) {
 
   const headerMap = normalizeHeaderMap(parsed.meta.fields || Object.keys(rows[0] || {}));
 
-  // Assign stable per-row ids for editing (observation-level edits).
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i];
     if (r && (typeof r.__cbc_rowId !== 'number' || !Number.isFinite(r.__cbc_rowId))) {
@@ -3448,7 +3361,6 @@ function parseCsvAndStore(csvText) {
     }
   }
 
-  // Rebuild rowId->edit map from persisted (rowKey-based) edits.
   editsByRowId.clear();
   rowKeyByRowId.clear();
   for (const r of rows) {
@@ -3462,7 +3374,6 @@ function parseCsvAndStore(csvText) {
     }
   }
 
-  // If persisted edits are still loading, re-apply them once available.
   if (editsLoadedPromise) {
     editsLoadedPromise.then(() => {
       editsByRowId.clear();
@@ -3493,18 +3404,17 @@ function parseCsvAndStore(csvText) {
     columnWarningCount: columnCountWarnings.length,
   };
 
-  // Auto-detect the CBC count date from the loaded data.
   const detected = detectCbcDateFromRows(rows, headerMap);
   const appliedLatestPreset = applyLatestCbcPreset({ syncDate: true });
   if (!appliedLatestPreset && detected && dateFilterEl) {
     dateFilterEl.value = detected.dateStr;
-    // Try to match a cbcPreset by value; if none found, update the select label.
+
     if (cbcPresetEl) {
       const matchingOption = [...cbcPresetEl.options].find((o) => o.value === detected.dateStr);
       if (matchingOption) {
         cbcPresetEl.value = detected.dateStr;
       } else {
-        // Insert a synthetic option so the user sees the detected date + CBC#.
+
         const [y, mo, d] = detected.dateStr.split('-');
         const label = `${detected.dateStr}  (CBC ${detected.cbcNumber})`;
         const opt = document.createElement('option');
@@ -3516,7 +3426,6 @@ function parseCsvAndStore(csvText) {
     }
   }
 
-  // Automatically assign areas as soon as both CSV and areas are available.
   if (areasIndex && areasIndex.length) {
     assignAreasToRows(rows, headerMap);
   } else {
@@ -3525,10 +3434,8 @@ function parseCsvAndStore(csvText) {
 
   plotLocationsFromCurrentCsv();
 
-  // Background-load ordering assets (taxonomy map / audubon list) if needed.
   maybeKickoffOrderingLoads();
 
-  // Background-load YOLO codes (uncommon/rare badges).
   maybeKickoffYoloLoad();
 
   renderCountCircleSelected();
@@ -3567,7 +3474,6 @@ document.addEventListener('keydown', (e) => {
   closeInfoModal();
 });
 
-  // Kick off persistent edit load early.
   editsLoadedPromise = loadAllEditsFromDb();
 
 function exportTripCsv() {
@@ -3709,7 +3615,7 @@ saveEditsEl?.addEventListener('click', async () => {
 
 matchAreasEl?.addEventListener('click', () => {
   try {
-    // Reset clears all selections (area + hotspot) without touching edits or date.
+
     activeAreaFilter = null;
     activeLocationFilter = null;
     activeLocationFilterLabel = null;
@@ -3719,7 +3625,7 @@ matchAreasEl?.addEventListener('click', () => {
     try {
       map.closePopup();
     } catch {
-      // ignore
+
     }
     updateAreasStyle();
     plotLocationsFromCurrentCsv();
@@ -3737,13 +3643,12 @@ async function handleFile(file) {
 }
 
 async function loadDefaultCsv() {
-  // Optionally load a default CSV if present in /public.
-  // Public deployments can omit this file so the app starts empty.
+
   try {
     setStatus('Loading default CSV…');
     const res = await fetch(assetUrl('MyEBirdData.csv'));
     if (!res.ok) {
-      // Silently skip if not available.
+
       setStatus('');
       return;
     }
@@ -3931,7 +3836,7 @@ fileInputEl.addEventListener('change', async (e) => {
     alert(err.message || String(err));
     setStatus('');
   } finally {
-    // allow re-selecting same file
+
     e.target.value = '';
   }
 });
@@ -3993,7 +3898,6 @@ areasDropzoneEl?.addEventListener('drop', async (e) => {
   }
 });
 
-// Kick off manifest-driven initialization after the UI is ready.
 initWorkbench().catch((err) => {
   console.error(err);
   alert(err.message || String(err));

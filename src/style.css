@@ -197,8 +197,6 @@ body {
   margin: 6px 0 4px 0;
 }
 
-
-
 .map-pane {
   width: 70%;
   height: 100%;
@@ -232,7 +230,6 @@ body {
   width: 100%;
 }
 
-/* Prevent transient focus outlines on Leaflet SVG paths when clicking polygons. */
 .leaflet-interactive,
 .leaflet-interactive:focus,
 .leaflet-interactive:focus-visible {
