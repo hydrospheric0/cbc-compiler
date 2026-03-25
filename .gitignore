@@ -3,6 +3,7 @@ dist/
 .DS_Store
 .vscode/
 *.log
-public/MyEBirdData.csv
+public/data/MyEBirdData.csv
 *.local
+temp/
 pushit.sh

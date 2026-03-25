@@ -255,13 +255,6 @@ app.innerHTML = `
     </div>
     <footer class="footerbar">
       <span class="footerCopyright">&copy; MetoliusResearch / Bart Wickel, 2026</span>
-      <a class="footerLink" href="https://buymeacoffee.com/bartg" target="_blank" rel="noopener noreferrer">
-        <img
-          class="bmcButton"
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-          alt="Buy Me a Coffee"
-        />
-      </a>
     </footer>
 
     <div id="infoModal" class="modalOverlay hidden" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">

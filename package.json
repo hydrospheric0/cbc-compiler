@@ -1,7 +1,7 @@
 {
   "name": "cbc-compilation-workbench",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "description": "CBC Compilation Workbench - client-side checklist compilation and review",
   "scripts": {
